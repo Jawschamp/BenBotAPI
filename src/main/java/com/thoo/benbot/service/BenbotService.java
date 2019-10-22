@@ -31,7 +31,7 @@ public interface BenbotService {
     @GET("/api/status")
     Call<StatusResponse> getStatus();
 
-    @GET("/api/searchFile?q=CID_1")
-    Call<String[]> searchFile(@Query("searchFile") String file);
+    @GET("/api/searchFile")
+    Call<String[]> searchFile(@Query("q") String file);
 
 }
