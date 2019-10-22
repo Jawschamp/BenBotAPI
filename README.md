@@ -27,6 +27,8 @@ Benbot API wrapper for Java
 
         Cosmetic cosmeticById = benBotAPI.getCosmeticById("Id");
 
+        String[] searchFile = benBotAPI.searchFiles("CID_001");
+
         JsonObject assetProperties = benBotAPI.getAssetProperties("File Path");
     }
 ```

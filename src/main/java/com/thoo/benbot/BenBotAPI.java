@@ -119,6 +119,18 @@ public final class BenBotAPI {
         }
     }
 
+    public String[] searchFiles(String file) {
+        Call<String[]> call = this.service.searchFile(file);
+        Response<String[]> response = null;
+        try {
+            response = call.execute();
+            return response.body();
+        } catch(Exception e){
+            e.printStackTrace();
+            return new String[]{};
+        }
+    }
+
     private boolean containsElement(String element, String[] names){
         for (String id : names) {
             if(id.equalsIgnoreCase(element)){

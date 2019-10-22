@@ -10,7 +10,7 @@ import com.thoo.benbot.model.StatusResponse;
 import java.util.Map;
 
 public class Example {
-//
+
     public static void main(String[] args) {
         BenBotAPI benBotAPI = new BenBotAPI();
 
@@ -35,6 +35,8 @@ public class Example {
         Cosmetic cosmeticByName = benBotAPI.getCosmeticByName("Name");
 
         Cosmetic cosmeticById = benBotAPI.getCosmeticById("Id");
+
+        String[] searchFile = benBotAPI.searchFiles("CID_001");
 
         JsonObject assetProperties = benBotAPI.getAssetProperties("File Path");
     }
