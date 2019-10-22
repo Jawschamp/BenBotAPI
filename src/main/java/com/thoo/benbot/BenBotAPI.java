@@ -119,8 +119,8 @@ public final class BenBotAPI {
         }
     }
 
-    private boolean containsElement(String element, String[] name){
-        for (String id : name) {
+    private boolean containsElement(String element, String[] names){
+        for (String id : names) {
             if(id.equalsIgnoreCase(element)){
                 return true;
             }
@@ -129,4 +129,3 @@ public final class BenBotAPI {
     }
 
 }
-//
