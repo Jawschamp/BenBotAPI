@@ -2,8 +2,6 @@
 Benbot API wrapper for Java
 
 ```java
-public class Example {
-
     public static void main(String[] args) {
         BenBotAPI benBotAPI = new BenBotAPI();
 
@@ -21,7 +19,9 @@ public class Example {
 
         Cosmetic[] cosmetics = benBotAPI.getCosmetics();
 
-        Cosmetic[] cosmeticsById = benBotAPI.getMultipleCosmeticsById("ID1", "ID2", "ID3");
+        Cosmetic[] multipleCosmeticsById = benBotAPI.getMultipleCosmeticsById("ID1", "ID2", "ID3");
+
+        Cosmetic[] multipleCosmeticsByName = benBotAPI.getMultipleCosmeticsByName("Ghoul Trooper", "Aura", "Black Knight", "Renegade Raider");
 
         Cosmetic cosmeticByName = benBotAPI.getCosmeticByName("Name");
 
@@ -29,6 +29,4 @@ public class Example {
 
         JsonObject assetProperties = benBotAPI.getAssetProperties("File Path");
     }
-
-}
 ```
