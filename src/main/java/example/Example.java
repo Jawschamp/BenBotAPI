@@ -1,6 +1,5 @@
 package example;
 
-
 import com.google.gson.JsonObject;
 import com.thoo.benbot.BenBotAPI;
 import com.thoo.benbot.model.AesResponse;
@@ -35,6 +34,12 @@ public class Example {
         Cosmetic cosmeticByName = benBotAPI.getCosmeticByName("Name");
 
         Cosmetic cosmeticById = benBotAPI.getCosmeticById("Id");
+
+        // Exports an asset and downloads an exportable object, Image/PNG and Application/OGG.
+        benBotAPI.exportAsset("FortniteGame/Content/Characters/Player/Female/Medium/Bodies/F_Med_Soldier_01/Skins/Zombie/Textures/T_F_MED_Soldier_01_Zombie_Body_D.uasset", "png");
+
+        // Saves an asset, Compressed as zip file, Should return decompressed files next update.
+        benBotAPI.saveAsset("FortniteGame/Content/Characters/Player/Female/Medium/Bodies/F_Med_Soldier_01/Skins/Zombie/Textures/T_F_MED_Soldier_01_Zombie_Body_D.uasset");
 
         String[] searchFile = benBotAPI.searchFiles("CID_001");
 

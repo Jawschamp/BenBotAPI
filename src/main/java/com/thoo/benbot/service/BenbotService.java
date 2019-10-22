@@ -34,4 +34,10 @@ public interface BenbotService {
     @GET("/api/searchFile")
     Call<String[]> searchFile(@Query("q") String file);
 
+    @GET("/api/saveAsset")
+    Call<Void> saveAsset(@Query("file") String file);
+
+    @GET("/api/exportAsset")
+    Call<Void> exportAsset(@Query("file") String file);
+
 }

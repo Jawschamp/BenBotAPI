@@ -10,9 +10,16 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import java.io.*;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 public final class BenBotAPI {
 
@@ -131,6 +138,31 @@ public final class BenBotAPI {
         }
     }
 
+    // TODO Decompress file
+    public void saveAsset(String filePath) {
+        Call<Void> call = this.service.saveAsset(filePath);
+        try {
+            ReadableByteChannel readableChannel = Channels.newChannel(new URL(call.request().url().toString()).openStream());
+            FileOutputStream outputStream = new FileOutputStream(filePath.split("/")[filePath.split("/").length - 1] + ".zip");
+            FileChannel channel = outputStream.getChannel();
+            channel.transferFrom(readableChannel, 0, Long.MAX_VALUE);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void exportAsset(String filePath, String exportExtension) {
+        Call<Void> call = this.service.exportAsset(filePath);
+        try {
+            ReadableByteChannel readableChannel = Channels.newChannel(new URL(call.request().url().toString()).openStream());
+            FileOutputStream outputStream = new FileOutputStream(filePath.split("/")[filePath.split("/").length - 1].replace(".uasset", "") + "." + exportExtension.replace(".", ""));
+            FileChannel channel = outputStream.getChannel();
+            channel.transferFrom(readableChannel, 0, Long.MAX_VALUE);
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private boolean containsElement(String element, String[] names){
         for (String id : names) {
             if(id.equalsIgnoreCase(element)){
@@ -138,6 +170,20 @@ public final class BenBotAPI {
             }
         }
         return false;
+    }
+
+    private void unzip(String filePath, String zipFile){
+        try {
+            BufferedOutputStream dest = null;
+            ZipInputStream zipInputStream = new ZipInputStream(new BufferedInputStream(new FileInputStream(zipFile)));
+            ZipEntry zipEntry;
+            while((zipEntry = zipInputStream.getNextEntry()) != null){
+                int c;
+                byte[] b = new byte[1024];
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
