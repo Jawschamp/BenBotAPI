@@ -10,7 +10,7 @@ import com.thoo.benbot.model.StatusResponse;
 import java.util.Map;
 
 public class Example {
-
+//
     public static void main(String[] args) {
         BenBotAPI benBotAPI = new BenBotAPI();
 
