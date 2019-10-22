@@ -10,6 +10,10 @@ import retrofit2.GsonConverterFactory;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class BenBotAPI {
 
     private BenbotService service;
@@ -71,6 +75,14 @@ public final class BenBotAPI {
         }
     }
 
+    public Cosmetic[] getMultipleCosmeticsByName(String... names) {
+        Cosmetic[] cosmetics = getCosmetics();
+        List<Cosmetic> cList = Arrays.stream(cosmetics).filter(c -> containsElement(c.displayName, names)).collect(Collectors.toList());
+        cosmetics = cList.toArray(new Cosmetic[cList.size()]);
+        cList.clear();
+        return cosmetics;
+    }
+
     public JsonObject getAssetProperties(String filePath) {
         Call<JsonObject> call = this.service.getAssetProperties(filePath);
         Response<JsonObject> response = null;
@@ -105,6 +117,15 @@ public final class BenBotAPI {
             e.printStackTrace();
             return StatusResponse.empty();
         }
+    }
+
+    private boolean containsElement(String element, String[] names){
+        for (String id : names) {
+            if(id.equalsIgnoreCase(element)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }

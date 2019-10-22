@@ -1,5 +1,6 @@
 package example;
 
+
 import com.google.gson.JsonObject;
 import com.thoo.benbot.BenBotAPI;
 import com.thoo.benbot.model.AesResponse;
@@ -27,7 +28,9 @@ public class Example {
 
         Cosmetic[] cosmetics = benBotAPI.getCosmetics();
 
-        Cosmetic[] cosmeticsById = benBotAPI.getMultipleCosmeticsById("ID1", "ID2", "ID3");
+        Cosmetic[] multipleCosmeticsById = benBotAPI.getMultipleCosmeticsById("ID1", "ID2", "ID3");
+
+        Cosmetic[] multipleCosmeticsByName = benBotAPI.getMultipleCosmeticsByName("Ghoul Trooper", "Aura", "Black Knight", "Renegade Raider");
 
         Cosmetic cosmeticByName = benBotAPI.getCosmeticByName("Name");
 
