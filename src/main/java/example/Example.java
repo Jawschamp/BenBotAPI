@@ -2,18 +2,21 @@ package example;
 
 import com.google.gson.JsonObject;
 import com.thoo.benbot.BenBotAPI;
-import com.thoo.benbot.model.AesResponse;
 import com.thoo.benbot.model.Cosmetic;
-import com.thoo.benbot.model.StatusResponse;
 
-import java.util.Map;
+import java.util.Arrays;
 
 public class Example {
 
     public static void main(String[] args) {
         BenBotAPI benBotAPI = new BenBotAPI();
 
-        AesResponse aesResponse = benBotAPI.getAES();
+        String[] test = new String[2];
+        test[0] = "Ikonik";
+        test[1] = "Renegade raider";
+        Cosmetic[] ok = benBotAPI.getMultipleCosmeticsByName(test);
+
+        /*AesResponse aesResponse = benBotAPI.getAES();
         String mainKey = aesResponse.mainKey;
         Map<String, String> additionalKeys = aesResponse.additionalKeys; // Map<Pak, AES>
 
@@ -43,7 +46,7 @@ public class Example {
 
         String[] searchFile = benBotAPI.searchFiles("CID_001");
 
-        JsonObject assetProperties = benBotAPI.getAssetProperties("File Path");
+        JsonObject assetProperties = benBotAPI.getAssetProperties("File Path");*/
     }
 
 }

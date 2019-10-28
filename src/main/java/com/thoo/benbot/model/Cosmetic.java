@@ -7,6 +7,7 @@ public class Cosmetic {
     public String displayName;
     public String backendType;
     public String icon;
+    public String featuredIcon;
     public String description;
     public String[] gameplay_tags;
     public Map<String, Variant[]> variants;
